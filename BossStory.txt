@@ -1,0 +1,224 @@
+Boss --- Sai we have some work to DO
+
+We have to develop a complete data pipeline
+
+Source  - Destination
+
+In this data pipeline  - we have 3 Sources
+
+1) Snowflake 
+2) AWS s3
+3) WEBAPI
+
+The entire pipeline work on AWS Cloud environment
+
+We have to trigger  3 SPARK Jobs to Extract 3 Sources
+
+1 ) First spark job should extract the data from snowflake  and find the total number site count per username and write to aws s3 bucket so that GMP will consume it
+
+2 ) Second spark job should extract the data from s3 and find the sum of total amount collected per username and write to aws s3 bucket so that UB will consume it
+
+3) Third spark job should extract the data from WEBAPI --- Flatten it completely and write the data aws s3 bucket so that G+ team will consume it 
+
+
+Now Sai  --- Its time for Bigger one
+
+Now we have to consume all the 3 extracted data and Run one Master spark job join all the data with respect to username and write the data to s3 using spark
+
+
+Sure make sure the entire data pipeline is AUTOMATED..............
+
+
+
+
+
+
+Sai ---- Boss ---- Can I know the sources DETAILS
+
+1) Snowflake Details
+
+
+
+
+
+
+2)  s3 Details
+
+
+
+
+3)  webapi
+
+
+
+1) Snowflake Details --- DATA VERIFIED
+
+sfURL","https://hgffczj-aj09505.snowflakecomputing.com
+sfAccount","hgffczj
+sfUser","sivavasusaia
+sfPassword","Aditya908
+sfDatabase","zeyodb
+sfSchema","zeyoschema
+sfRole","ACCOUNTADMIN
+sfWarehouse","COMPUTE_WH
+dbtable,srctab
+
+2)  s3 Details -DATA VERIFIED
+
+
+s3://zeyoauto/src
+
+
+3)  webapi -DATA VERIFIED
+
+https://randomuser.me/api/0.8/?results=1000
+
+
+Sai --- Boss -- I verified the data -- Everything is looking Good
+
+But --- to process data I need a spark environment
+
+Where Can i develop My code
+
+
+BOSS --- Sai GOOD YOU VERIFIED DATA
+
+Now regarding spark code development
+
+AWS Provided Hadoop Service installed with Spark --- SERVICE name is EMR
+
+Create Your OWN cluster (1 node) with Spark Installed in it 
+
+AND Let me know 
+
+
+Sai ----  BOSS --- I have started My cluster  --- it is starting state
+
+
+
+Boss ---- Sai ---- You have to wait till the state turns to Waiting State
+
+Till the cluster turns waiting lets talk about the Requirement more
+
+
+
+Sai -- Sure
+
+
+Boss ---- Sai You have to develop 3 Extraction Spark jobs and 1 Master job
+
+3 Extract spark jobs should write data to s3 
+
+Use below details to write the data
+
+Snowflake  ----->  s3://zeyoauto/dest/sitecount
+
+s3 source  ----->  s3://zeyoauto/dest/total_amount_data
+
+webapi     ----->  s3://zeyoauto/dest/customer_api
+
+
+Sai --- Ok Boss 
+
+
+Boss  ------ Now you got some idea.
+
+Sai remember --  3 Extracted spark jobs trigger -- that has to write data to 3 s3 intermediate location to be consumed by other team
+
+Finally you have trigger one master job to join all the data and write the final data to s3 again
+
+The final s3 path is 
+
+Final s3  ----- s3://zeyoauto/dest/finalcustomer
+
+
+Sai --- Go and check  cluster should have turned to Waiting state.
+
+Login to it and start your Development
+
+
+
+
+
+Sai --- Boss I have logged in to the Cluster -- Whats next
+
+
+Boss ---- Sai  you have to open spark shell to start your Development 
+
+	Be cautious we have snowflake integration
+
+	We need that connector when You open spark Shell
+
+	Please open spark shell with snowflake connector
+
+
+Sai --- Boss Spark shell is open with connector --- I will start the work
+
+
+
+Boss ----- ALL THE BEST
+
+
+
+
+
+
+
+
+
+
+
+Sai --- boss --- I have extracted all the Sources and written the data to aws s3 intermediate Location
+
+
+Boss ---- Wonderful -- What are you waiting for Start you development for MASTER JOB
+
+	RECAP
+
+	READ ALL THE 3 EXTRACTED DATA
+
+	Join with USERNAME and write the final Results to s3 destination
+
+	s3://zeyoauto/dest/finalcustomer
+
+
+
+
+
+
+
+
+Sai --- Boss  
+
+
+I have implemented 3 Extraction jobs
+
+I have implemented the master job also
+
+Took a back up of the code
+
+
+
+
+
+Boss -- Sai thats great -- You have completed the Development
+
+Terminate the Cluster  --- It would cost sai
+
+
+Boss --- Sai  can you delete the dest folder now
+
+
+	Sai can you create a folder  in s3://zeyoauto/ipldir
+
+
+	Sai  Can you but your back up Code in the eclipse and generate jar and place it in the same bucket
+
+	snow
+	s3
+	api
+	master
+
+
+
+
